@@ -11,6 +11,10 @@ onDropdownOptionClicked = function () {
     document.getElementById('drop-option').innerHTML = searchOptions[1 - searchOptionIndex];
 }
 
+onSearch = function () {
+    console.log('do something');
+}
+
 window.onclick = function(event) {
     if (!event.target.matches('.drop-btn')) {
         var dropdown = document.getElementById('dropdown-content');

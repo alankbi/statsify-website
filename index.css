@@ -21,11 +21,13 @@ a:hover {
 .drop-btn {
     background-color: #4CAF50;
     color: white;
-    padding: 16px;
+    /* padding: 16px;
     font-size: 16px;
     border: none;
-    cursor: pointer;
-    width: 200px;
+    cursor: pointer; */
+    width: 100px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
   
 .dropdown {
@@ -42,11 +44,11 @@ a:hover {
 .drop-option {
     background-color: #003366;
     color: white;
-    padding: 16px;
+    /* padding: 16px;
     font-size: 16px;
     border: none;
-    cursor: pointer;
-    width: 200px;
+    cursor: pointer; */
+    width: 100px;
 }
   
 .drop-option:hover {
@@ -56,4 +58,17 @@ a:hover {
 
 .show {
     display: block;
+}
+
+.select-depth {
+    -webkit-appearance: none;
+    border-radius: 0;
+    border: none;
+    background-color: #DDDDDD;
+    width: 70px;
+    padding-left: 10px;
+}
+
+.search-url {
+    max-width: 30vw;
 }

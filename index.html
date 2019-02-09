@@ -21,12 +21,30 @@
                 <p>Show key stats such as word count, number of pages, and more</p>
             </div>
 
-            <div class="search">
-                <div class="dropdown">
-                    <button class="drop-btn" id="drop-btn" onclick="onDropdownClicked();">Page</button>
-                    <div class="dropdown-content" id="dropdown-content">
-                        <button class="drop-option" id="drop-option" onclick="onDropdownOptionClicked();">Website</button>
+            <div class="search input-group justify-content-center">
+                <div class="input-group-prepend">
+                    <div class="dropdown">
+                        <button class="drop-btn btn" id="drop-btn" onclick="onDropdownClicked();">Page</button>
+                        <div class="dropdown-content" id="dropdown-content">
+                            <button class="drop-option btn" id="drop-option" onclick="onDropdownOptionClicked();">Website</button>
+                        </div>
                     </div>
+                    <select class="select-depth" id="select-depth">
+                        <option value="1" elected>Depth</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+                <input type="text" class="search-url form-control" id="search-url">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" id="search-btn" onclick="onSearch();">Search</button>
                 </div>
             </div>
         </div>
