@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Website Visualizer</title>
+
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="index.css">
+        <script src="index.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <div class="header-main">
+                    <a href="/">Website Visualizer</a>
+                </div>
+            </div>
+
+            <div class="body">
+                <h1>Visualize a Website</h1><br>
+                <p>Show key stats such as word count, number of pages, and more</p>
+            </div>
+
+            <div class="search">
+                <div class="dropdown">
+                    <button class="drop-btn" id="drop-btn" onclick="onDropdownClicked();">Page</button>
+                    <div class="dropdown-content" id="dropdown-content">
+                        <button class="drop-option" id="drop-option" onclick="onDropdownOptionClicked();">Website</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
