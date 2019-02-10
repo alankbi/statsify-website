@@ -61,6 +61,7 @@ a:hover {
 }
 
 .select-depth {
+    display: none;
     -webkit-appearance: none;
     border-radius: 0;
     border: none;
@@ -71,4 +72,8 @@ a:hover {
 
 .search-url {
     max-width: 30vw;
+}
+
+.invalid {
+    border-color: red;
 }
