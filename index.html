@@ -9,22 +9,24 @@
         <link rel="stylesheet" href="lib/json.human.css">
 
         <script src="lib/json.human.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+        <script src="visualize.js"></script>
         <script src="index.js"></script>
     </head>
     <body>
         <div class="container">
-            <div class="header">
+            <div class="header text-center">
                 <div class="header-main">
                     <a href="/">Website Visualizer</a>
                 </div>
             </div>
 
-            <div class="body">
+            <div class="body text-center">
                 <h1>Visualize a Website</h1><br>
                 <p>Show key stats such as word count, number of pages, and more</p>
             </div>
 
-            <div class="search input-group justify-content-center">
+            <div class="search input-group justify-content-center text-center">
                 <div class="input-group-prepend">
                     <div class="dropdown">
                         <button class="drop-btn btn" id="drop-btn" onclick="onDropdownClicked();">Page</button>
@@ -50,6 +52,28 @@
                     <button class="btn btn-primary" id="search-btn" onclick="onSearch();">Search</button>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-5">
+                    <div class="page-visualizations text-center">
+                        <h3>Internal and Outbound Links</h3>
+                        <canvas id="pageLinksChart" width="300" height="300"></canvas>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="page-visualizations">
+                        <h5 class="text-center">Internal Links</h5>
+                        <ul id="pageInternalLinks"></ul>
+
+                        <h5 class="text-center">Outbound Links</h5>
+                        <ul id="pageOutboundLinks"></ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TODO: website visualizations -->
+            
+            <!-- TODO: CodeMirror plain JSON -->
             <div id="json-wrapper"></div>
         </div>
     </body>

@@ -18,22 +18,6 @@ onDropdownOptionClicked = function () {
     }
 }
 
-renderJSON = function (json) {
-    var node = JsonHuman.format(json, {
-        hyperlinks : {
-            enable : true,
-            keys: ['internal_links', 'outbound_links'],
-            
-        },
-    });
-
-    var wrapper = document.getElementById('json-wrapper');
-    if (wrapper.hasChildNodes()) {
-        wrapper.removeChild(wrapper.childNodes[0]);
-    }
-    wrapper.appendChild(node);
-}
-
 isValidUrl = function (url) {
     var pattern = new RegExp('^(https?:\\/\\/)?' +
     '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
@@ -70,7 +54,8 @@ onSearch = function () {
     var xhr = new XMLHttpRequest();
     xhr.addEventListener('readystatechange', function () {
         if (this.readyState === this.DONE) {
-          renderJSON(JSON.parse(this.responseText));
+            visualize(JSON.parse(this.responseText))
+            // renderJSON(JSON.parse(this.responseText));
         }
       });
 

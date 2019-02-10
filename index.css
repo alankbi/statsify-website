@@ -1,7 +1,6 @@
 * {
 	font-family: Verdana;
     color: #333333;
-    text-align: center;
 }
 
 body {
@@ -68,6 +67,10 @@ a:hover {
     background-color: #DDDDDD;
     width: 70px;
     padding-left: 10px;
+}
+
+.search {
+    margin-bottom: 20vh;
 }
 
 .search-url {
