@@ -77,3 +77,8 @@ a:hover {
 .invalid {
     border-color: red;
 }
+
+#json-wrapper {
+    text-align: left;
+    display: table;
+}

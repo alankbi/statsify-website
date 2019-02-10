@@ -18,6 +18,22 @@ onDropdownOptionClicked = function () {
     }
 }
 
+renderJSON = function (json) {
+    var node = JsonHuman.format(json, {
+        hyperlinks : {
+            enable : true,
+            keys: ['internal_links', 'outbound_links'],
+            
+        },
+    });
+
+    var wrapper = document.getElementById('json-wrapper');
+    if (wrapper.hasChildNodes()) {
+        wrapper.removeChild(wrapper.childNodes[0]);
+    }
+    wrapper.appendChild(node);
+}
+
 isValidUrl = function (url) {
     var pattern = new RegExp('^(https?:\\/\\/)?' +
     '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
@@ -33,8 +49,8 @@ onSearchUrlChange = function () {
 }
 
 onSearch = function () {
-    //var requestUrl = 'https://website-visualizer.herokuapp.com/' + searchOptions[searchOptionIndex].toLowerCase();
-    var requestUrl = 'http://localhost:8000/' + searchOptions[searchOptionIndex].toLowerCase();
+    var requestUrl = 'https://website-visualizer.herokuapp.com/' + searchOptions[searchOptionIndex].toLowerCase();
+    // var requestUrl = 'http://localhost:8000/' + searchOptions[searchOptionIndex].toLowerCase();
 
     var searchUrlField = document.getElementById('search-url');
     if (isValidUrl(searchUrlField.value)) {
@@ -54,7 +70,7 @@ onSearch = function () {
     var xhr = new XMLHttpRequest();
     xhr.addEventListener('readystatechange', function () {
         if (this.readyState === this.DONE) {
-          console.log(this.responseText);
+          renderJSON(JSON.parse(this.responseText));
         }
       });
 
