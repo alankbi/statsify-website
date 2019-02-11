@@ -232,20 +232,6 @@ renderJSON = function (json) {
             lineWrapping: true,
         });
     }
-
-    var node = JsonHuman.format(json, {
-        hyperlinks : {
-            enable : true,
-            keys: ['internal_links', 'outbound_links'],
-            
-        },
-    });
-
-    var wrapper = document.getElementById('json-wrapper');
-    if (wrapper.hasChildNodes()) {
-        wrapper.removeChild(wrapper.childNodes[0]);
-    }
-    wrapper.appendChild(node);
 }
 
 createListItemWithLink = function (link) {
