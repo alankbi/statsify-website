@@ -7,8 +7,11 @@
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="index.css">
         <link rel="stylesheet" href="lib/json.human.css">
+        <link rel="stylesheet" href="lib/codemirror.css">
 
         <script src="lib/json.human.js"></script>
+        <script src="lib/codemirror.js"></script>
+        <script src="lib/javascript.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
         <script src="visualize.js"></script>
         <script src="index.js"></script>
@@ -93,7 +96,12 @@
                     </div>
                 </div>
 
-                <!-- TODO: CodeMirror plain JSON -->
+                <div class="json-display">
+                    <!-- <pre class="json-display">
+                        <code class="json" id="json-display"></code>
+                    </pre> -->
+                    <textarea id="json-display"></textarea>
+                </div>
                 <div id="json-wrapper"></div>
             </div>
         </div>

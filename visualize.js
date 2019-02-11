@@ -1,6 +1,7 @@
 var linksChart;
 var textChart;
 var pagesChart;
+var codeMirror;
 
 var stopWords = new Set(["i", "me", "my", "myself", "we", "our", "ours", "ourselves", 
 "you", "you're", "you've", "you'll", "you'd", "your", "yours", "yourself", "yourselves", 
@@ -219,6 +220,19 @@ visualizeLinks = function (data, ctx, searchType) {
 }
 
 renderJSON = function (json) {
+    if (typeof codeMirror !== 'undefined') {
+        codeMirror.setValue(JSON.stringify(json, null, 4));
+    } else {
+        var display = document.getElementById('json-display');
+        display.value = JSON.stringify(json, null, 4);
+        codeMirror = CodeMirror.fromTextArea(display, {
+            lineNumbers: true,
+            mode: 'application/ld+json',
+            readOnly: true,
+            lineWrapping: true,
+        });
+    }
+
     var node = JsonHuman.format(json, {
         hyperlinks : {
             enable : true,

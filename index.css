@@ -4,8 +4,21 @@
     box-shadow: none !important;
 }
 
+textarea {
+    width: 90%;
+    height: 500px;
+}
+
+.CodeMirror {
+    border: 1px solid #ddd;
+}
+
 li {
     word-break: break-all;
+}
+
+pre {
+    white-space: pre-wrap;
 }
 
 select {
