@@ -53,44 +53,45 @@
                 </div>
             </div>
 
-            <div id="page-visualizations">
+            <div id="visualizations">
                 <div class="row">
                     <div class="col-5">
-                        <div class="page-visualizations">
-                            <canvas id="pageLinksChart" width="300" height="300"></canvas>
+                        <div class="visualizations">
+                            <canvas id="links-chart" width="300" height="300"></canvas>
                         </div>
                     </div>
                     <div class="col-7">
-                        <div class="page-visualizations">
+                        <div class="visualizations">
                             <h5>Internal Links</h5>
-                            <ul id="pageInternalLinks"></ul>
+                            <ul id="internal-links"></ul>
 
                             <h5>Outbound Links</h5>
-                            <ul id="pageOutboundLinks"></ul>
+                            <ul id="outbound-links"></ul>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-5">
-                        <div class="page-visualizations">
+                        <div class="visualizations">
                             <h5>Key Phrases: </h5>
-                            <p id="pageKeyPhrases"></p>
-                            <h5>Word Count: </h5>
-                            <p id="pageWordCount"></p>
+                            <p id="key-phrases"></p>
+                            <h5 id="word-count-header">Word Count: </h5>
+                            <p id="word-count"></p>
+                            <h5 class="website-item">Average Word Count: </h5>
+                            <p class="website-item" id="average-word-count"></p>
                         </div>
                     </div>
                     <div class="col-7">
-                        <div class="page-visualizations">
-                            <canvas id="pageTextChart" width="600" height="400"></canvas>
+                        <div class="visualizations">
+                            <canvas id="text-chart" width="600" height="400"></canvas>
                         </div>
                     </div>
                 </div>
+                <!-- TODO: CodeMirror plain JSON -->
+                <div id="json-wrapper"></div>
             </div>
             
             <!-- TODO: website visualizations -->
-            
-            <!-- TODO: CodeMirror plain JSON -->
-            <div id="json-wrapper"></div>
         </div>
     </body>
 </html>

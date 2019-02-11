@@ -1,27 +1,48 @@
-var pageLinksChart;
-var pageTextChart;
+var linksChart;
+var textChart;
 
-visualize = function (data) {
+visualize = function (data, searchType) {
     data = data['data'];
     
-    var ctx = document.getElementById('pageLinksChart').getContext('2d');
-    if (typeof pageLinksChart !== 'undefined') {
-        pageLinksChart.destroy();
+    var ctx = document.getElementById('links-chart').getContext('2d');
+    if (typeof linksChart !== 'undefined') {
+        linksChart.destroy();
     }
-    pageLinksChart = visualizeLinks(data, ctx);
+    linksChart = visualizeLinks(data, ctx, searchType);
 
-    ctx = document.getElementById('pageTextChart').getContext('2d');
-    if (typeof pageTextChart !== 'undefined') {
-        pageTextChart.destroy();
+    ctx = document.getElementById('text-chart').getContext('2d');
+    if (typeof textChart !== 'undefined') {
+        textChart.destroy();
     }
-    pageTextChart = visualizeText(data, ctx);
+    textChart = visualizeText(data, ctx, searchType);
+
+    if (searchType === 'website') {
+        // do extra stuff
+    }
 }
 
-visualizeText = function (data, ctx) {
-    document.getElementById('pageKeyPhrases').innerText = data['key_phrases'].toString()
-    document.getElementById('pageWordCount').innerText = data['word_count']
+visualizeText = function (data, ctx, searchType) {
+    document.getElementById('key-phrases').innerText = data['key_phrases'].toString()
+    if (searchType === 'page') {
+        document.getElementById('word-count-header').innerText = 'Word Count: ';
+        document.getElementById('word-count').innerText = data['word_count'];
+    } else {
+        document.getElementById('word-count-header').innerText = 'Total Word Count: ';
+        document.getElementById('word-count').innerText = data['total_word_count'];
 
-    textData = createOrderedWordFrequencyMap(data['text']);
+        document.getElementById('average-word-count').innerText = data['average_word_count'];
+    }
+
+    var textData;
+    if (searchType === 'page') {
+        textData = createOrderedWordFrequencyMap(data['text']);
+    } else {
+        text = '';
+        Object.keys(data['pages']).forEach(function(key) {
+            text += data['pages'][key]['page']['text'];
+        });
+        textData = createOrderedWordFrequencyMap(text);
+    }
     labels = [];
     freqs = [];
     for (var i = 0; i < textData.length; i++) {
@@ -56,17 +77,23 @@ visualizeText = function (data, ctx) {
     });
 }
 
-visualizeLinks = function (data, ctx) {
-    var internalLinks = data['internal_links'];
+visualizeLinks = function (data, ctx, searchType) {
     var outboundLinks = data['outbound_links'];
+    
+    var internalLinks;
+    if (searchType === 'page') {
+        internalLinks = data['internal_links'];
+    } else {
+        internalLinks = Object.keys(data['pages']);
+    }
 
-    var ul = document.getElementById('pageInternalLinks');
+    var ul = document.getElementById('internal-links');
     ul.innerHTML = '';
     for (var i = 0; i < internalLinks.length; i++) {
         ul.appendChild(createListItemWithLink(internalLinks[i]));
     }
 
-    ul = document.getElementById('pageOutboundLinks');
+    ul = document.getElementById('outbound-links');
     ul.innerHTML = '';
     for (var i = 0; i < outboundLinks.length; i++) {
         ul.appendChild(createListItemWithLink(outboundLinks[i]));

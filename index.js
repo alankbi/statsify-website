@@ -53,7 +53,10 @@ onSearch = function () {
     }
     console.log(requestUrl);
 
-    document.getElementById('page-visualizations').style.display = 'none';
+    document.getElementById('visualizations').style.display = 'none';
+    Array.prototype.forEach.call(document.getElementsByClassName('website-item'), function(item) {
+        item.style.display = 'none';
+    });
 
     var xhr = new XMLHttpRequest();
     xhr.addEventListener('readystatechange', function () {
@@ -63,8 +66,13 @@ onSearch = function () {
                 alert(data['error']);
                 return;
             }
-            document.getElementById('page-visualizations').style.display = 'block';
-            //visualize(data)
+            document.getElementById('visualizations').style.display = 'block';
+            if (searchType === 'website') {
+                Array.prototype.forEach.call(document.getElementsByClassName('website-item'), function(item) {
+                    item.style.display = 'initial';
+                });
+            }
+            visualize(data, searchType)
             renderJSON(data);
         }
       });

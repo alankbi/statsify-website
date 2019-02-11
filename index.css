@@ -8,6 +8,10 @@ li {
     word-break: break-all;
 }
 
+select {
+    outline: none;
+}
+
 body {
 	padding: 3vh 2vw;
 }
@@ -97,6 +101,10 @@ a:hover {
     display: table;
 }
 
-#page-visualizations {
+#visualizations {
+    display: none;
+}
+
+.website-item {
     display: none;
 }
