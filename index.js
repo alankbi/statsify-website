@@ -34,7 +34,8 @@ onSearchUrlChange = function () {
 }
 
 onSearch = function () {
-    var requestUrl = 'https://website-visualizer.herokuapp.com/' + searchOptions[searchOptionIndex].toLowerCase();
+    var searchType = searchOptions[searchOptionIndex].toLowerCase();
+    var requestUrl = 'https://website-visualizer.herokuapp.com/' + searchType;
     // var requestUrl = 'http://localhost:8000/' + searchOptions[searchOptionIndex].toLowerCase();
 
     var searchUrlField = document.getElementById('search-url');
@@ -52,7 +53,7 @@ onSearch = function () {
     }
     console.log(requestUrl);
 
-    document.getElementById('page-visualizations').style.visibility = 'none';
+    document.getElementById('page-visualizations').style.display = 'none';
 
     var xhr = new XMLHttpRequest();
     xhr.addEventListener('readystatechange', function () {
@@ -62,9 +63,9 @@ onSearch = function () {
                 alert(data['error']);
                 return;
             }
-            document.getElementById('page-visualizations').style.visibility = 'visible';
-            visualize(data)
-            //renderJSON(data);
+            document.getElementById('page-visualizations').style.display = 'block';
+            //visualize(data)
+            renderJSON(data);
         }
       });
 
