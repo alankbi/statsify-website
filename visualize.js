@@ -22,7 +22,16 @@ visualize = function (data, searchType) {
 }
 
 visualizeText = function (data, ctx, searchType) {
-    document.getElementById('key-phrases').innerText = data['key_phrases'].toString()
+    ul = document.getElementById('key-phrases');
+    ul.innerHTML = '';
+    data['key_phrases'].forEach(function (phrase) {
+        var li = document.createElement('li');
+        var p = document.createElement('p');
+        p.textContent = phrase;
+        li.appendChild(p);
+        ul.append(li);
+    });
+    //.innerText = data['key_phrases'].toString()
     if (searchType === 'page') {
         document.getElementById('word-count-header').innerText = 'Word Count: ';
         document.getElementById('word-count').innerText = data['word_count'];
@@ -38,7 +47,7 @@ visualizeText = function (data, ctx, searchType) {
         textData = createOrderedWordFrequencyMap(data['text']);
     } else {
         text = '';
-        Object.keys(data['pages']).forEach(function(key) {
+        Object.keys(data['pages']).forEach(function (key) {
             text += data['pages'][key]['page']['text'];
         });
         textData = createOrderedWordFrequencyMap(text);
@@ -87,6 +96,24 @@ visualizeLinks = function (data, ctx, searchType) {
         internalLinks = Object.keys(data['pages']);
     }
 
+    linkData = {
+        datasets: [{
+            data: [internalLinks.length, outboundLinks.length],
+            backgroundColor: ['#55B0D8', '#F95851']
+        }],
+        labels: [
+            'Internal Links',
+            'Outbound Links',
+        ]
+    }
+
+    if (outboundLinks.length > 10) {
+        outboundLinks = outboundLinks.slice(0, 9).concat(['...'])
+    }
+    if (internalLinks.length > 10) {
+        internalLinks = internalLinks.slice(0, 9).concat(['...'])
+    }
+
     var ul = document.getElementById('internal-links');
     ul.innerHTML = '';
     for (var i = 0; i < internalLinks.length; i++) {
@@ -99,16 +126,6 @@ visualizeLinks = function (data, ctx, searchType) {
         ul.appendChild(createListItemWithLink(outboundLinks[i]));
     }
 
-    linkData = {
-        datasets: [{
-            data: [internalLinks.length, outboundLinks.length],
-            backgroundColor: ['#55B0D8', '#F95851']
-        }],
-        labels: [
-            'Internal Links',
-            'Outbound Links',
-        ]
-    }
     return new Chart(ctx, {
         type: 'pie',
         data: linkData,
@@ -139,30 +156,36 @@ renderJSON = function (json) {
 }
 
 createListItemWithLink = function (link) {
-    var a = document.createElement('a');
-    a.textContent = link;
-    a.setAttribute('href', link)
-
     var li = document.createElement('li');
-    li.appendChild(a);
+
+    if (link === '...') {
+        var p = document.createElement('p');
+        p.textContent = link;
+        li.append(p);
+    } else {
+        var a = document.createElement('a');
+        a.textContent = link;
+        a.setAttribute('href', link)
+        li.appendChild(a);
+    }
     return li;
 }
 
 createOrderedWordFrequencyMap = function (text) {
     var words = text.replace(/[.]/g, '').split(/\s/);
     var freqMap = {};
-    words.forEach(function(w) {
+    words.forEach(function (w) {
         if (!freqMap[w]) {
             freqMap[w] = 0;
         }
         freqMap[w] += 1;
     });
 
-    var items = Object.keys(freqMap).map(function(key) {
+    var items = Object.keys(freqMap).map(function (key) {
         return [key, freqMap[key]];
     });
     
-    items.sort(function(first, second) {
+    items.sort(function (first, second) {
         return second[1] - first[1];
     });
 
