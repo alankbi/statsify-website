@@ -3,6 +3,7 @@ var searchOptionIndex = 0;
 
 onDropdownClicked = function () {
     document.getElementById('dropdown-content').classList.toggle('show');
+    document.getElementById('drop-btn').classList.toggle('sharp-bottom-edges');
 }
 
 onDropdownOptionClicked = function () {
@@ -51,11 +52,19 @@ onSearch = function () {
     }
     console.log(requestUrl);
 
+    document.getElementById('page-visualizations').style.visibility = 'none';
+
     var xhr = new XMLHttpRequest();
     xhr.addEventListener('readystatechange', function () {
         if (this.readyState === this.DONE) {
-            visualize(JSON.parse(this.responseText))
-            // renderJSON(JSON.parse(this.responseText));
+            data = JSON.parse(this.responseText);
+            if (data.hasOwnProperty('error')) {
+                alert(data['error']);
+                return;
+            }
+            document.getElementById('page-visualizations').style.visibility = 'visible';
+            visualize(data)
+            //renderJSON(data);
         }
       });
 
@@ -68,6 +77,7 @@ window.onclick = function(event) {
         var dropdown = document.getElementById('dropdown-content');
         if (dropdown.classList.contains('show')) {
             dropdown.classList.remove('show');
+            document.getElementById('drop-btn').classList.remove('sharp-bottom-edges');
         }
     }
 }

@@ -1,10 +1,11 @@
 * {
 	font-family: Verdana;
     color: #333333;
+    box-shadow: none !important;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    text-align: center;
+li {
+    word-break: break-all;
 }
 
 body {
@@ -52,6 +53,8 @@ a:hover {
     border: none;
     cursor: pointer; */
     width: 100px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
 }
   
 .drop-option:hover {
@@ -61,6 +64,10 @@ a:hover {
 
 .show {
     display: block;
+}
+
+.sharp-bottom-edges {
+    border-bottom-left-radius: 0;
 }
 
 .select-depth {
@@ -88,4 +95,8 @@ a:hover {
 #json-wrapper {
     text-align: left;
     display: table;
+}
+
+#page-visualizations {
+    /* display: none; */
 }

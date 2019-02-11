@@ -47,43 +47,45 @@
                         <option value="8">8</option>
                     </select>
                 </div>
-                <input type="text" class="search-url form-control" id="search-url" onchange="onSearchUrlChange();">
+                <input type="text" class="search-url form-control text-center" id="search-url" onchange="onSearchUrlChange();">
                 <div class="input-group-append">
                     <button class="btn btn-primary" id="search-btn" onclick="onSearch();">Search</button>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-5">
-                    <div class="page-visualizations">
-                        <h3>Internal and Outbound Links</h3>
-                        <canvas id="pageLinksChart" width="300" height="300"></canvas>
-                    </div>
-                </div>
-                <div class="col-7">
-                    <div class="page-visualizations">
-                        <h5>Internal Links</h5>
-                        <ul id="pageInternalLinks"></ul>
-
-                        <h5>Outbound Links</h5>
-                        <ul id="pageOutboundLinks"></ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
+            <div id="page-visualizations">
+                <div class="row">
                     <div class="col-5">
                         <div class="page-visualizations">
-                            <h3>Text</h3>
-                            <h5 id="pageKeyPhrases">Key Phrases: </h5>
-                            <h5 id="pageWordCount">Word Count: </h5>
+                            <canvas id="pageLinksChart" width="300" height="300"></canvas>
                         </div>
                     </div>
                     <div class="col-7">
                         <div class="page-visualizations">
-                            <canvas id="pageTextChart" width="300" height="300"></canvas>
+                            <h5>Internal Links</h5>
+                            <ul id="pageInternalLinks"></ul>
+
+                            <h5>Outbound Links</h5>
+                            <ul id="pageOutboundLinks"></ul>
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-5">
+                        <div class="page-visualizations">
+                            <h5>Key Phrases: </h5>
+                            <p id="pageKeyPhrases"></p>
+                            <h5>Word Count: </h5>
+                            <p id="pageWordCount"></p>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="page-visualizations">
+                            <canvas id="pageTextChart" width="600" height="400"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
             <!-- TODO: website visualizations -->
             

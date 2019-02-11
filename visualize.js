@@ -1,20 +1,25 @@
+var pageLinksChart;
+var pageTextChart;
+
 visualize = function (data) {
-    if (data.hasOwnProperty('error')) {
-        alert(data['error']);
-        return;
-    } 
     data = data['data'];
+    
+    var ctx = document.getElementById('pageLinksChart').getContext('2d');
+    if (typeof pageLinksChart !== 'undefined') {
+        pageLinksChart.destroy();
+    }
+    pageLinksChart = visualizeLinks(data, ctx);
 
-    var ctx = document.getElementById('pageLinksChart');
-    var pageLinksChart = visualizeLinks(data, ctx);
-
-    ctx = document.getElementById('pageTextChart');
-    var pageTextChart = visualizeText(data, ctx);
+    ctx = document.getElementById('pageTextChart').getContext('2d');
+    if (typeof pageTextChart !== 'undefined') {
+        pageTextChart.destroy();
+    }
+    pageTextChart = visualizeText(data, ctx);
 }
 
 visualizeText = function (data, ctx) {
-    document.getElementById('pageKeyPhrases').innerText += data['key_phrases'].toString()
-    document.getElementById('pageWordCount').innerText += data['word_count']
+    document.getElementById('pageKeyPhrases').innerText = data['key_phrases'].toString()
+    document.getElementById('pageWordCount').innerText = data['word_count']
 
     textData = createOrderedWordFrequencyMap(data['text']);
     labels = [];
@@ -55,20 +60,22 @@ visualizeLinks = function (data, ctx) {
     var internalLinks = data['internal_links'];
     var outboundLinks = data['outbound_links'];
 
+    var ul = document.getElementById('pageInternalLinks');
+    ul.innerHTML = '';
     for (var i = 0; i < internalLinks.length; i++) {
-        var ul = document.getElementById('pageInternalLinks');
         ul.appendChild(createListItemWithLink(internalLinks[i]));
     }
 
+    ul = document.getElementById('pageOutboundLinks');
+    ul.innerHTML = '';
     for (var i = 0; i < outboundLinks.length; i++) {
-        var ul = document.getElementById('pageOutboundLinks');
         ul.appendChild(createListItemWithLink(outboundLinks[i]));
     }
 
     linkData = {
         datasets: [{
             data: [internalLinks.length, outboundLinks.length],
-            backgroundColor: ['#F95851', '#55B0D8']
+            backgroundColor: ['#55B0D8', '#F95851']
         }],
         labels: [
             'Internal Links',
