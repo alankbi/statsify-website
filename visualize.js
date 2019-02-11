@@ -1,5 +1,6 @@
 var linksChart;
 var textChart;
+var pagesChart;
 
 visualize = function (data, searchType) {
     data = data['data'];
@@ -17,8 +18,69 @@ visualize = function (data, searchType) {
     textChart = visualizeText(data, ctx, searchType);
 
     if (searchType === 'website') {
-        // do extra stuff
+        var ctx = document.getElementById('pages-chart').getContext('2d');
+        if (typeof pagesChart !== 'undefined') {
+            pagesChart.destroy();
+        }
+        pagesChart = visualizePages(data, ctx);
     }
+}
+
+visualizePages = function (data, ctx) {
+    var items = Object.keys(data['pages']).map(function (key) {
+        return [key, data['pages'][key]['freq']];
+    });
+    
+    items.sort(function (first, second) {
+        return second[1] - first[1];
+    });
+
+    items = items.slice(0, 10)
+
+    pages = [];
+    freqs = [];
+    for (var i = 0; i < items.length; i++) {
+        pages.push(items[i][0]);
+        freqs.push(items[i][1]);
+    }
+
+    return new Chart(ctx, {
+        type: 'bar',
+        data: {
+            datasets: [{
+                data: freqs,
+                backgroundColor: '#F95851'
+            }],
+            labels: pages
+        },
+        options: {
+            responsive: false,
+            legend: { display: false },
+            title: {
+                display: true,
+                text: 'Top Linked Pages'
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        callback: function(value) {
+                            if (value.length > 35) {
+                                return value.substr(0, 35) + '...';
+                            } else {
+                                return value;
+                            }
+                        },
+                        autoSkip: false
+                    }
+                }]
+            }
+        }
+    });
 }
 
 visualizeText = function (data, ctx, searchType) {
@@ -31,7 +93,7 @@ visualizeText = function (data, ctx, searchType) {
         li.appendChild(p);
         ul.append(li);
     });
-    //.innerText = data['key_phrases'].toString()
+
     if (searchType === 'page') {
         document.getElementById('word-count-header').innerText = 'Word Count: ';
         document.getElementById('word-count').innerText = data['word_count'];
