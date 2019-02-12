@@ -1,6 +1,12 @@
+:root {
+    --blue-color: #55B0D8;
+    --red-color: #F95851;
+    --dark-text-color: #333333;
+}
+
 * {
 	font-family: Verdana;
-    color: #333333;
+    color: var(--dark-text-color);
     box-shadow: none !important;
 }
 
@@ -97,7 +103,8 @@ a:hover {
     padding-left: 10px;
 }
 
-.search {
+.error-loading {
+    margin-top: 20px;
     margin-bottom: 20vh;
 }
 
@@ -106,7 +113,7 @@ a:hover {
 }
 
 .invalid {
-    border-color: red;
+    border-color: var(--red-color);
 }
 
 #json-wrapper {
@@ -114,10 +121,15 @@ a:hover {
     display: table;
 }
 
-#visualizations {
+#visualizations, #loading {
     display: none;
 }
 
 .website-item {
+    display: none;
+}
+
+#error-message {
+    color: var(--red-color);
     display: none;
 }

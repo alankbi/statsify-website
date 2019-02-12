@@ -19,6 +19,14 @@ onDropdownOptionClicked = function () {
     }
 }
 
+displayError = function (error) {
+    var errorElement = document.getElementById('error-message');
+    errorElement.innerText = error;
+    errorElement.style.display = 'initial';
+    
+    document.getElementById('search-url').classList.add('invalid');
+}
+
 isValidUrl = function (url) {
     var pattern = new RegExp('^(https?:\\/\\/)?' +
     '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
@@ -42,7 +50,7 @@ onSearch = function () {
     if (isValidUrl(searchUrlField.value)) {
         requestUrl += '?url=' + searchUrlField.value;
     } else {
-        searchUrlField.classList.add('invalid');
+        displayError('Please enter a valid URL.')
         return;
     }
 
@@ -57,13 +65,15 @@ onSearch = function () {
     Array.prototype.forEach.call(document.getElementsByClassName('website-item'), function (item) {
         item.style.display = 'none';
     });
+    document.getElementById('loading').style.display = 'initial';
 
     var xhr = new XMLHttpRequest();
     xhr.addEventListener('readystatechange', function () {
         if (this.readyState === this.DONE) {
+            document.getElementById('loading').style.display = 'none';
             data = JSON.parse(this.responseText);
             if (data.hasOwnProperty('error')) {
-                alert(data['error']);
+                displayError(data['error']);
                 return;
             }
             document.getElementById('visualizations').style.display = 'block';
@@ -82,6 +92,8 @@ onSearch = function () {
 }
 
 window.onclick = function (event) {
+    document.getElementById('error-message').style.display = 'none';
+    
     if (!event.target.matches('.drop-btn')) {
         var dropdown = document.getElementById('dropdown-content');
         if (dropdown.classList.contains('show')) {
