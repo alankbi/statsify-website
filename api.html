@@ -26,14 +26,14 @@
             <h1 class="text-center">API Documentation</h1>
             <div class="page-documentation">
                 <h2>Page Endpoint</h2>
-                <p>http://website-visualizer.herokuapp.com/page</p>
+                <code>http://website-visualizer.herokuapp.com/page</code>
 
                 <h3>Options:</h3>
                 <p><code>url</code> (required)</p><br>
                 <p>The desired url.</p>
 
                 <h3>Example Call:</h3>
-                <code>http://website-visualizer.herokuapp.com/page?url=website-visualizer.com</code>
+                <code>http://website-visualizer.herokuapp.com/page?url=http://example.com</code>
                 
                 <h3>Response:</h3>
                 <textarea id="page-response"></textarea>
@@ -41,7 +41,7 @@
 
             <div class="website-documentation">
                 <h2>Website Endpoint</h2>
-                <p>http://website-visualizer.herokuapp.com/website</p>
+                <code>http://website-visualizer.herokuapp.com/website</code>
 
                 <h3>Options:</h3>
                 <p><code>url</code> (required)</p><br>
@@ -50,10 +50,41 @@
                 <p>The maximum depth of links to recursively crawl through before stopping.</p>
 
                 <h3>Example Call:</h3>
-                <code>http://website-visualizer.herokuapp.com/website?url=website-visualizer.com&depth=1</code>
+                <code>http://website-visualizer.herokuapp.com/website?url=http://example.com&depth=1</code>
                 
                 <h3>Response:</h3>
                 <textarea id="website-response"></textarea>
+                <p>Note 1: The "page" key contains an object with the same structure as returned by the page endpoint.</p>
+                <p>Note 2: "freq" refers how many times a page is linked to across the whole website.</p>
+            </div>
+
+            <div class="error-documentation">
+                <h2>Errors</h2>
+
+                <h3>Response:</h3>
+                <textarea id="error-response"></textarea>
+
+                <h3>Common Errors:</h3>
+                <ul>
+                    <li>Status Code 200 - Status is okay, but the attempt to request the given url failed.</li>
+                    <li>Status Code 200 - Status is okay, but robots are restricted from accessing this url.</li>
+                    <li>Status Code 404 - Endpoint not found.</li>
+                    <li>Status Code 429 - Rate limit reached (page: ~1000/day, website: ~200/day).</li>
+                    <li>Status Code 500 - An error occurred on the server.</li>
+                </ul>
+            </div>
+
+            <div class="other-documentation">
+                <h2>Other Details</h2>
+                <ul>
+                    <li>Currently, only HTML pages are included in the data returned by the API.</li>
+                    <li>The API scrapes only up to 100 unique urls per call to prevent large websites from taking forever; 
+                        this includes non-HTML pagees, as each page takes time to request. </li>
+                    <li>After the 100 urls limit is reached, all other urls are grouped together under the url * with
+                        the following JSON representation (does not affect a website's average word count): 
+                    </li>
+                </ul>
+                <textarea id="other-response"></textarea>
             </div>
         </div>
     </body>

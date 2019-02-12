@@ -2,19 +2,20 @@ showPageResponse = function () {
     var pageResponse = {
         'data': {
             'internal_links': [
-                'http://website-visualizer.com/',
-                'http://website-visualizer.com/api/'
+                'http://example.com/example',
+                'http://example.com/unique-internal-links'
             ],
             'key_phrases': [
-                'Visualize A Website',
-                'Show Key Stats',
-                'Number Of Pages'
+                'Example Key Phrase',
+                'Title Capitalization Format',
+                'Three Words Each'
             ],
             'outbound_links': [
-                'https://github.com/alankbi/'
+                'https://google.com',
+                'https://yahoo.com'
             ],
-            'text': 'Visualize a Website\nShow key stats such as word count, number of pages, and more... (continued)',
-            'url': 'website-visualizer.com',
+            'text': 'Example Website Text.\nLorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'url': 'http://example.com',
             'word_count': 100
         }
     }
@@ -33,54 +34,57 @@ showWebsiteResponse = function () {
         'data': {
             'average_word_count': 100.0,
             'key_phrases': [
-                'Visualize A Website',
-                'Show Key Stats',
-                'Number Of Pages'
+                'Example Key Phrase',
+                'Title Capitalization Format',
+                'Three Words Each'
             ],
             'outbound_links': [
-                'https://github.com/alankbi'
+                'https://google.com',
+                'https://yahoo.com'
             ],
             'pages': {
-                'http://website-visualizer.com/': {
-                    'freq': 1,
+                'http://example.com': {
+                    'freq': 2,
                     'page': {
                         'internal_links': [
-                            'http://website-visualizer.com/',
-                            'http://website-visualizer.com/api/',
+                            'http://example.com/example',
+                            'http://example.com/unique-internal-links'
                         ],
                         'key_phrases': [
-                            'Visualize A Website',
-                            'Show Key Stats',
-                            'Number Of Pages'
+                            'Example Key Phrase',
+                            'Title Capitalization Format',
+                            'Three Words Each'
                         ],
                         'outbound_links': [
-                            'https://github.com/alankbi'
+                            'https://google.com',
+                            'https://yahoo.com'
                         ],
-                        'text': 'Visualize a Website\nShow key stats such as word count, number of pages, and more... (continued)',
-                        'url': 'http://website-visualizer.com/',
+                        'text': 'Example Website Text.\nLorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                        'url': 'http://example.com',
                         'word_count': 100
                     }
                 },
-                'http://website-visualizer.com/api/': {
+                'http://example.com/example': {
                     'freq': 1,
                     'page': {
                         'internal_links': [
-                            'http://website-visualizer.com/',
-                            'http://website-visualizer.com/api/'
+                            'http://example.com',
                         ],
                         'key_phrases': [
-                            'Visualize A Website',
-                            'Show Key Stats',
-                            'Number Of Pages'
+                            'Example Key Phrase',
+                            'Title Capitalization Format',
+                            'Three Words Each'
                         ],
                         'outbound_links': [
-                            'https://github.com/alankbi/news-app'
+                            'https://google.com',
+                            'https://yahoo.com'
                         ],
-                        'text': 'API Documentation\nPage Endpoint... (continued)',
-                        'url': 'http://website-visualizer.com/api/',
+                        'text': 'Example Website Text.\nLorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                        'url': 'http://example.com/example',
                         'word_count': 100
                     }
-                }
+                },
+                'http://example.com/unique-internal-links': '...and so on...'
             },
             'total_word_count': 200
         }
@@ -95,7 +99,42 @@ showWebsiteResponse = function () {
     });
 }
 
+showErrorResponse = function () {
+    var errorResponse = {
+        'error': 'An error occurred when trying to reach this url.'
+    }
+    var display = document.getElementById('error-response');
+    display.value = JSON.stringify(errorResponse, null, 4);
+    codeMirror = CodeMirror.fromTextArea(display, {
+        lineNumbers: true,
+        mode: 'application/ld+json',
+        readOnly: true,
+        lineWrapping: true,
+    });
+}
+
+showOtherResponse = function () {
+    var otherResponse = {
+        'internal_links': [],
+        'key_phrases': [],
+        'outbound_links': [],
+        'text': '',
+        'url': '*',
+        'word_count': 0
+    }
+    var display = document.getElementById('other-response');
+    display.value = JSON.stringify(otherResponse, null, 4);
+    codeMirror = CodeMirror.fromTextArea(display, {
+        lineNumbers: true,
+        mode: 'application/ld+json',
+        readOnly: true,
+        lineWrapping: true,
+    });
+}
+
 window.onload = function () {
     showPageResponse();
     showWebsiteResponse();
+    showErrorResponse();
+    showOtherResponse();
 };
