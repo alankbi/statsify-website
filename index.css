@@ -127,7 +127,12 @@ a:hover {
     display: table;
 }
 
-#visualizations, #loading {
+#visualizations {
+    display: none;
+    padding-top: 50px;
+}
+
+#loading {
     display: none;
 }
 
@@ -138,4 +143,15 @@ a:hover {
 #error-message {
     color: var(--red-color);
     display: none;
+}
+
+.contact {
+    font-size: small;
+    position: fixed;
+    bottom: 12px;
+    right: 12px;
+    padding: 5px;
+    background-color: #DDDDDD;
+    border-radius: 5px;
+    z-index: 10;
 }
