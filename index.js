@@ -1,4 +1,4 @@
-var searchOptions = ['Page', 'Website']
+var searchOptions = ['PAGE', 'WEBSITE']
 var searchOptionIndex = 0;
 
 onDropdownClicked = function () {
@@ -8,8 +8,16 @@ onDropdownClicked = function () {
 
 onDropdownOptionClicked = function () {
     searchOptionIndex = 1 - searchOptionIndex;
-    document.getElementById('drop-btn').innerHTML = searchOptions[searchOptionIndex];
-    document.getElementById('drop-option').innerHTML = searchOptions[1 - searchOptionIndex];
+    var dropBtn = document.getElementById('drop-btn');
+    var dropOpt = document.getElementById('drop-option');
+
+    dropBtn.innerHTML = searchOptions[searchOptionIndex];
+    dropOpt.innerHTML = searchOptions[1 - searchOptionIndex];
+
+    dropBtn.classList.toggle('page-btn');
+    dropBtn.classList.toggle('website-btn');
+    dropOpt.classList.toggle('page-btn');
+    dropOpt.classList.toggle('website-btn');
 
     var selectDepth = document.getElementById('select-depth');
     if (searchOptionIndex === 1) {

@@ -7,6 +7,7 @@
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="index.css">
         <link rel="stylesheet" href="lib/codemirror.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
         <script src="lib/codemirror.js"></script>
         <script src="lib/javascript.js"></script>
@@ -15,31 +16,32 @@
         <script src="index.js"></script>
     </head>
     <body>
+        <div class="background"></div>
         <div class="container">
-            <div class="header text-center">
+            <div class="header">
                 <div class="header-main">
                     <a href="/">Statsify</a>
                 </div>
-                <div class="header-main">
-                        <a href="/api">API</a>
-                    </div>
+                <div class="header-main header-right">
+                    <a href="/api">API</a>
+                </div>
             </div>
 
             <div class="body text-center">
-                <h1>Visualize a Page or Website</h1><br>
+                <h1 class="dark-font font-weight-bold">Visualize a page or website</h1><br>
                 <p>Show key stats such as word count, number of pages, and more</p>
             </div>
 
             <div class="search input-group justify-content-center text-center">
                 <div class="input-group-prepend">
                     <div class="dropdown">
-                        <button class="drop-btn btn" id="drop-btn" onclick="onDropdownClicked();">Page</button>
+                        <button class="drop-btn btn page-btn search-btn" id="drop-btn" onclick="onDropdownClicked();">PAGE</button>
                         <div class="dropdown-content" id="dropdown-content">
-                            <button class="drop-option btn" id="drop-option" onclick="onDropdownOptionClicked();">Website</button>
+                            <button class="drop-option website-btn search-btn btn" id="drop-option" onclick="onDropdownOptionClicked();">WEBSITE</button>
                         </div>
                     </div>
-                    <select class="select-depth" id="select-depth">
-                        <option value="1" elected>Depth</option>
+                    <select class="select-depth search-btn" id="select-depth">
+                        <option value="1" elected>DEPTH</option>
                         <option value="0">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -51,10 +53,8 @@
                         <option value="8">8</option>
                     </select>
                 </div>
-                <input type="text" class="search-url form-control text-center" id="search-url" onchange="onSearchUrlChange();">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" id="search-btn" onclick="onSearch();">Search</button>
-                </div>
+                <input type="text" class="search-url search-btn form-control text-center" id="search-url"  placeholder="http://www.example.com" onchange="onSearchUrlChange();">
+                <button class="btn btn-primary search-btn" id="search-btn" onclick="onSearch();">SEARCH</button>
             </div>
 
             <div class="text-center error-loading">
