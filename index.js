@@ -102,3 +102,25 @@ window.onclick = function (event) {
         }
     }
 }
+
+checkUrlParameters = function () {
+    var params = new URL(window.location.href).searchParams;
+    var url = params.get('url');
+    var depth = params.get('depth');
+
+    if (params.get('type') === 'website') {
+        onDropdownOptionClicked();
+    }
+    if (depth !== null && !isNaN(depth) && (function (x) { return (x | 0) === x; })(parseFloat(depth))) {
+        document.getElementById('select-depth').value = Math.max(0, Math.min(8, depth));
+    }
+    if (url !== null) {
+        document.getElementById('search-url').value = url;
+        onSearch();
+    }
+
+}
+
+window.onload = function () {
+    checkUrlParameters();
+}
