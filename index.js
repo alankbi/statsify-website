@@ -43,7 +43,7 @@ onSearchUrlChange = function () {
 
 onSearch = function () {
     var searchType = searchOptions[searchOptionIndex].toLowerCase();
-    var requestUrl = 'https://website-visualizer.herokuapp.com/' + searchType;
+    var requestUrl = 'https://statsify.herokuapp.com/' + searchType;
     // var requestUrl = 'http://localhost:8000/' + searchOptions[searchOptionIndex].toLowerCase();
 
     var searchUrlField = document.getElementById('search-url');
