@@ -36,11 +36,18 @@ visualize = function (data, searchType) {
     textChart = visualizeText(data, ctx, searchType);
 
     if (searchType === 'website') {
-        var ctx = document.getElementById('pages-chart').getContext('2d');
+        var canvas = document.getElementById('pages-chart');
         if (typeof pagesChart !== 'undefined') {
             pagesChart.destroy();
         }
-        pagesChart = visualizePages(data, ctx);
+        pagesChart = visualizePages(data, canvas.getContext('2d'));
+        canvas.onclick = function (e) {
+            var elements = pagesChart.getElementAtEvent(e);
+            if (elements.length > 0) {
+                var url = 'https://www.statsify.us?url=' + elements[0]._model.label;
+                window.open(url);
+            }
+        }
     }
 }
 
