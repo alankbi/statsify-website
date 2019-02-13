@@ -87,7 +87,7 @@ onSearch = function () {
             document.getElementById('visualizations').style.display = 'block';
             if (searchType === 'website') {
                 Array.prototype.forEach.call(document.getElementsByClassName('website-item'), function (item) {
-                    item.style.display = 'initial';
+                    item.style.display = 'block';
                 });
             }
             visualize(data, searchType)

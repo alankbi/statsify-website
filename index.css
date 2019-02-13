@@ -13,10 +13,19 @@
     box-shadow: none !important;
 }
 
+a {
+    color: rgb(18, 116, 237);
+}
+
+.row {
+    margin-bottom: 50px;
+}
+
 .dark-font {
     color: var(--dark-text-color);
     font-family: Roboto, sans-serif !important;
-    margin-bottom: 0;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
 textarea {
@@ -26,6 +35,14 @@ textarea {
 
 .CodeMirror {
     border: 1px solid #ddd;
+}
+
+canvas {
+    background: white;
+    box-shadow: 0 8px 24px rgba(32,43,54,0.25) !important;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 li {
@@ -47,7 +64,6 @@ select {
 body {
 	padding: 30px 2vw;
 }
-
 
 a:hover {
     text-decoration: none;
@@ -135,6 +151,7 @@ a:hover {
 .search-url {
     max-width: 30vw;
     border-left: none;
+    min-width: 150px;
 }
 
 .search-btn {
@@ -150,7 +167,6 @@ a:hover {
     width: 100px;
     margin-left: 10px;
     background: linear-gradient(65deg, rgb(76, 175, 80) 0%,rgb(120, 190, 115) 100%);
-    
 }
 
 #search-btn:hover {
@@ -199,16 +215,24 @@ a:hover {
     z-index: 10;
 }
 
-.container {
-    /* color: white; */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 600px;
+    z-index: -1;
+    background-image: url(blob-shape.svg);
+    background-size: cover;
 }
 
-.background {
+.background1 {
     position: absolute;
     left: 0;
     right: 0;
-    top: 0;
-    height: 600px;
-    /* background-color: var(--blue-color); */
+    top: 900px;;
+    height: 900px;
     z-index: -1;
+    background-image: url(blob-shape1.svg);
+    background-size: cover;
 }

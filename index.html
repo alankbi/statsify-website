@@ -63,40 +63,41 @@
             </div>
 
             <div id="visualizations">
+                <div class="background1"></div>
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-lg-7">
                         <div class="visualizations">
-                            <canvas id="links-chart" width="300" height="300"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="visualizations">
-                            <h5>Internal Links</h5>
+                            <h5 class="text-center dark-font">Internal Links</h5>
                             <ul id="internal-links"></ul>
 
-                            <h5>Outbound Links</h5>
+                            <h5 class="text-center dark-font">Outbound Links</h5>
                             <ul id="outbound-links"></ul>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-lg-5 justify-content-center">
                         <div class="visualizations">
-                            <h5>Key Phrases: </h5>
+                            <canvas id="links-chart" width="380" height="380"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="visualizations">
+                            <h5 class="text-center dark-font">Key Phrases: </h5>
                             <ul id="key-phrases"></ul>
-                            <h5 id="word-count-header">Word Count: </h5>
+                            <h5 id="word-count-header" class="text-center dark-font">Word Count: </h5>
                             <p id="word-count"></p>
-                            <h5 class="website-item">Average Word Count: </h5>
+                            <h5 class="website-item text-center dark-font">Average Word Count: </h5><br>
                             <p class="website-item" id="average-word-count"></p>
                         </div>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-lg-7 justify-content-center">
                         <div class="visualizations">
                             <canvas id="text-chart" width="600" height="400"></canvas>
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row justify-content-center">
                     <div class="visualizations">
                         <canvas class="website-item" id="pages-chart" width="800" height="500"></canvas>
                     </div>

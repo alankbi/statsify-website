@@ -83,7 +83,8 @@ visualizePages = function (data, ctx) {
             legend: { display: false },
             title: {
                 display: true,
-                text: 'Top Linked Pages'
+                text: 'Top Linked Pages',
+                fontSize: 20
             },
             scales: {
                 yAxes: [{
@@ -160,7 +161,8 @@ visualizeText = function (data, ctx, searchType) {
             legend: { display: false },
             title: {
                 display: true,
-                text: 'Top Occurring Words'
+                text: 'Top Occurring Words',
+                fontSize: 20
             },
             scales: {
                 yAxes: [{
@@ -195,10 +197,10 @@ visualizeLinks = function (data, ctx, searchType) {
     }
 
     if (outboundLinks.length > 10) {
-        outboundLinks = outboundLinks.slice(0, 9).concat(['...'])
+        outboundLinks = outboundLinks.slice(0, 9).concat([(outboundLinks.length - 9) + ' more...'])
     }
     if (internalLinks.length > 10) {
-        internalLinks = internalLinks.slice(0, 9).concat(['...'])
+        internalLinks = internalLinks.slice(0, 9).concat([(internalLinks.length - 9) + ' more...'])
     }
 
     var ul = document.getElementById('internal-links');
@@ -220,7 +222,8 @@ visualizeLinks = function (data, ctx, searchType) {
             responsive: false,
             title: {
                 display: true,
-                text: 'Internal vs. Outbound Links'
+                text: 'Internal vs. Outbound Links',
+                fontSize: 20
               }
         }
     });
@@ -244,13 +247,18 @@ renderJSON = function (json) {
 createListItemWithLink = function (link) {
     var li = document.createElement('li');
 
-    if (link === '...') {
+    if (link.includes('more...')) {
         var p = document.createElement('p');
         p.textContent = link;
         li.append(p);
     } else {
         var a = document.createElement('a');
-        a.textContent = link;
+        if (link.length > 53) {
+            a.textContent = link.substring(0, 50) + '...';
+        } else {
+            a.textContent = link;
+        }
+        // TODO: shorten link if longer than x characters
         a.setAttribute('href', link)
         li.appendChild(a);
     }
