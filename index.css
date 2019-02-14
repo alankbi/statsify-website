@@ -7,7 +7,7 @@
 }
 
 * {
-    font-family: Lato, sans-serif !important;
+    font-family: 'Open Sans', sans-serif;
     font-weight: lighter;
     color: var(--light-text-color);
     box-shadow: none !important;
@@ -32,6 +32,22 @@ a {
     border: 1px solid #ddd;
 }
 
+.CodeMirror span {
+    color: var(--dark-text-color);
+}
+
+code {
+    background: rgba(95, 105, 115, .1);
+    padding: 4px;
+    border-radius: 3px;
+    color: #F9425F;
+}
+
+.id-link:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--dark-text-color);
+}
+
 canvas {
     background: white;
     box-shadow: 0 8px 24px rgba(32,43,54,0.25) !important;
@@ -49,7 +65,7 @@ canvas {
     padding: 0;
 }
 
-li {
+#visualizations li {
     word-break: break-all;
 }
 
@@ -63,6 +79,10 @@ select {
 
 .body {
     margin-bottom: 60px;
+}
+
+.body-main {
+    margin-bottom: 25px;
 }
 
 body {
@@ -85,10 +105,6 @@ a:hover {
 
 .header-right {
     float: right;
-}
-
-.body-main {
-    margin-bottom: 25px;
 }
 
 
@@ -207,6 +223,7 @@ a:hover {
 #url-visualization-header {
     margin-left: auto;
     margin-right: auto;
+    font-family: Roboto, sans-serif;
     font-size: xx-large;
     font-weight: bold;
     color: rgb(18, 116, 237);
@@ -214,8 +231,6 @@ a:hover {
 
 #url-visualization-header:hover {
     text-decoration: underline;
-    /* color: var(--dark-text-color); */
-    /* color: rgb(18, 116, 237); */
 }
 
 #pages-chart {
@@ -252,35 +267,31 @@ a:hover {
     z-index: 10;
 }
 
-.background {
+.background, .background-1, .background-2, .background-3 {
     position: absolute;
-    top: 0;
     left: 0;
     right: 0;
     height: 100%;
     z-index: -1;
-    background-image: url(blob-shape.svg);
     background-size: cover;
+}
+
+.background {
+    top: 0;
+    background-image: url(blob-shape.svg);
 }
 
 .background-1 {
-    position: absolute;
-    left: 0;
-    right: 0;
     top: 800px;;
-    height: 100%;
-    z-index: -1;
     background-image: url(blob-shape-1.svg);
-    background-size: cover;
 }
 
 .background-2 {
-    position: absolute;
-    left: 0;
-    right: 0;
     top: 1600px;;
-    height: 100%;
-    z-index: -1;
     background-image: url(blob-shape-2.svg);
-    background-size: cover;
+}
+
+.background-3 {
+    top: 2400px;;
+    background-image: url(blob-shape-1.svg);
 }

@@ -7,76 +7,85 @@
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="index.css">
         <link rel="stylesheet" href="lib/codemirror.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto|Open+Sans:300,400" rel="stylesheet">
 
         <script src="lib/codemirror.js"></script>
         <script src="lib/javascript.js"></script>
         <script src="api.js"></script>
     </head>
     <body>
-        <div class="container">
-            <div class="header text-center">
+        <div class="container mb-3">
+            <div class="background"></div>
+            <div class="background-1"></div>
+            <div class="background-2"></div>
+            <div class="background-3"></div>
+            <div class="header">
                 <div class="header-main">
                     <a href="/">Statsify</a>
                 </div>
-                <div class="header-main">
-                    <a href="/api">API</a>
+                <div class="header-main header-right">
+                    <a href="/api">API Docs</a>
                 </div>
             </div>
 
-            <h1 class="text-center">API Documentation</h1>
-            <div class="page-documentation">
-                <h2>Page Endpoint</h2>
-                <code>https://statsify.herokuapp.com/page</code>
+            <h1 class="text-center dark-font">API Documentation</h1><br><br>
 
-                <h3>Options:</h3>
-                <p><code>url</code> (required)</p><br>
-                <p>The desired url.</p>
+            <div class="page-documentation" id="page">
+                <a class="id-link" href="#page"><h2 class="dark-font">Page Endpoint</h2></a>
+                <code>https://statsify.herokuapp.com/page</code><br><br>
 
-                <h3>Example Call:</h3>
-                <code>https://statsify.herokuapp.com/page?url=http://example.com</code>
+                <h5 class="dark-font">Options:</h5>
+                <p><code>url</code> <b>(required)</b> - the desired url.</p><br>
+
+                <h5 class="dark-font">Example Call:</h5>
+                <code>https://statsify.herokuapp.com/page?url=http://example.com</code><br><br>
                 
-                <h3>Response:</h3>
+                <h5 class="dark-font">Response:</h5>
                 <textarea id="page-response"></textarea>
-            </div>
+            </div><br><br><br>
 
-            <div class="website-documentation">
-                <h2>Website Endpoint</h2>
-                <code>https://statsify.herokuapp.com/website</code>
+            <div class="website-documentation" id="website">
+                <a class="id-link" href="#website"><h2 class="dark-font">Website Endpoint</h2></a>
+                <code>https://statsify.herokuapp.com/website</code><br><br>
 
-                <h3>Options:</h3>
-                <p><code>url</code> (required)</p><br>
-                <p>The desired url.</p>
-                <p><code>depth</code> (default = 1, 0 &le; depth &le; 8)</p><br>
-                <p>The maximum depth of links to recursively crawl through before stopping.</p>
-
-                <h3>Example Call:</h3>
-                <code>https://statsify.herokuapp.com/website?url=http://example.com&depth=1</code>
-                
-                <h3>Response:</h3>
-                <textarea id="website-response"></textarea>
-                <p>Note 1: The "page" key contains an object with the same structure as returned by the page endpoint.</p>
-                <p>Note 2: "freq" refers how many times a page is linked to across the whole website.</p>
-            </div>
-
-            <div class="error-documentation">
-                <h2>Errors</h2>
-
-                <h3>Response:</h3>
-                <textarea id="error-response"></textarea>
-
-                <h3>Common Errors:</h3>
+                <h5 class="dark-font">Options:</h5>
+                <p><code>url</code> <b>(required)</b> - the desired url.</p>
+                <p><code>depth</code> <b>(optional)</b> - the maximum 
+                    depth of links to recursively crawl through before stopping.</p>
                 <ul>
+                    <li>default = 1</li>
+                    <li>0 &le; <code>depth</code> &le; 8</li>
+                </ul><br>
+
+                <h5 class="dark-font">Example Call:</h5>
+                <code>https://statsify.herokuapp.com/website?url=http://example.com&depth=1</code><br><br>
+                
+                <h5 class="dark-font">Response:</h5>
+                <textarea id="website-response"></textarea><br>
+                <p style="font-style: italic;">Note 1: The "page" key contains an object with the same structure 
+                    as returned by the <code>page</code> endpoint.</p>
+                <p style="font-style: italic;">Note 2: "freq" refers how many times a page is linked to across the whole website.</p>
+            </div><br><br>
+
+            <div class="error-documentation" id="errors">
+                <a class="id-link" href="#errors"><h2 class="dark-font">Errors</h2></a><br>
+
+                <h5 class="dark-font">Response:</h5>
+                <textarea id="error-response"></textarea><br>
+
+                <h5 class="dark-font">Common Errors:</h5>
+                <ul class="dark-text-container">
                     <li>Status Code 200 - Status is okay, but the attempt to request the given url failed.</li>
                     <li>Status Code 200 - Status is okay, but robots are restricted from accessing this url.</li>
                     <li>Status Code 404 - Endpoint not found.</li>
                     <li>Status Code 429 - Rate limit reached (page: ~1000/day, website: ~200/day).</li>
                     <li>Status Code 500 - An error occurred on the server.</li>
                 </ul>
-            </div>
+            </div><br><br>
 
-            <div class="other-documentation">
-                <h2>Other Details</h2>
-                <ul>
+            <div class="other-documentation" id="other">
+                <a class="id-link" href="#other"><h2 class="dark-font">Other Details</h2></a><br>
+                <ul class="dark-text-container">
                     <li>Currently, only HTML pages are included in the data returned by the API.</li>
                     <li>The API scrapes only up to 100 unique urls per call to prevent large websites from taking forever; 
                         this includes non-HTML pagees, as each page takes time to request. </li>

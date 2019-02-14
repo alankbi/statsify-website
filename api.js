@@ -27,6 +27,7 @@ showPageResponse = function () {
         readOnly: true,
         lineWrapping: true,
     });
+    codeMirror.setSize(null, 500);
 }
 
 showWebsiteResponse = function () {
@@ -97,6 +98,7 @@ showWebsiteResponse = function () {
         readOnly: true,
         lineWrapping: true,
     });
+    codeMirror.setSize(null, 500);
 }
 
 showErrorResponse = function () {
@@ -111,6 +113,7 @@ showErrorResponse = function () {
         readOnly: true,
         lineWrapping: true,
     });
+    codeMirror.setSize(null, 90);
 }
 
 showOtherResponse = function () {
@@ -130,6 +133,7 @@ showOtherResponse = function () {
         readOnly: true,
         lineWrapping: true,
     });
+    codeMirror.setSize(null, 210);
 }
 
 window.onload = function () {
