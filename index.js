@@ -84,6 +84,21 @@ onSearch = function () {
                 displayError(data['error']);
                 return;
             }
+
+            var urlHeader = document.getElementById('url-visualization-header');
+            urlHeader.innerText = searchUrlField.value;// + ' \u2192';
+            //urlHeader.onclick = function () {
+                if (searchUrlField.value.startsWith('http')) {
+                    //window.open(searchUrlField.value, '_blank');
+                    urlHeader.href = searchUrlField.value;
+                } else {
+                    //window.open('http://' + searchUrlField.value, '_blank');
+                    urlHeader.href = 'http://' + searchUrlField.value;
+                }
+                urlHeader.target = '_blank';
+                
+            //};
+            
             document.getElementById('visualizations').style.display = 'block';
             if (searchType === 'website') {
                 Array.prototype.forEach.call(document.getElementsByClassName('website-item'), function (item) {
@@ -131,4 +146,10 @@ checkUrlParameters = function () {
 
 window.onload = function () {
     checkUrlParameters();
+    document.getElementById('search-url').addEventListener('keyup', function (e) {
+        e.preventDefault();
+        if (e.keyCode === 13) { // ENTER
+            document.getElementById('search-btn').click();
+        }
+    });
 }

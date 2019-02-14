@@ -45,7 +45,7 @@ visualize = function (data, searchType) {
             var elements = pagesChart.getElementAtEvent(e);
             if (elements.length > 0) {
                 var url = 'https://www.statsify.us?url=' + elements[0]._model.label;
-                window.open(url);
+                window.open(url, '_blank');
             }
         }
     }
@@ -60,7 +60,7 @@ visualizePages = function (data, ctx) {
         return second[1] - first[1];
     });
 
-    items = items.slice(0, 10)
+    items = items.slice(0, 12)
 
     pages = [];
     freqs = [];
@@ -101,7 +101,9 @@ visualizePages = function (data, ctx) {
                                 return value;
                             }
                         },
-                        autoSkip: false
+                        autoSkip: false,
+                        maxRotation: 60,
+                        minRotation: 60
                     }
                 }]
             }
@@ -121,10 +123,10 @@ visualizeText = function (data, ctx, searchType) {
     });
 
     if (searchType === 'page') {
-        document.getElementById('word-count-header').innerText = 'Word Count: ';
+        document.getElementById('word-count-header').innerText = 'Word Count ';
         document.getElementById('word-count').innerText = data['word_count'];
     } else {
-        document.getElementById('word-count-header').innerText = 'Total Word Count: ';
+        document.getElementById('word-count-header').innerText = 'Total Word Count ';
         document.getElementById('word-count').innerText = data['total_word_count'];
 
         document.getElementById('average-word-count').innerText = data['average_word_count'];
@@ -241,6 +243,7 @@ renderJSON = function (json) {
             readOnly: true,
             lineWrapping: true,
         });
+        codeMirror.setSize(null, 500);
     }
 }
 
@@ -258,8 +261,8 @@ createListItemWithLink = function (link) {
         } else {
             a.textContent = link;
         }
-        // TODO: shorten link if longer than x characters
         a.setAttribute('href', link)
+        a.setAttribute('target', '_blank');
         li.appendChild(a);
     }
     return li;

@@ -25,12 +25,7 @@ a {
     color: var(--dark-text-color);
     font-family: Roboto, sans-serif !important;
     font-weight: bold;
-    margin-bottom: 5px;
-}
-
-textarea {
-    width: 90%;
-    height: 500px;
+    margin-bottom: 15px;
 }
 
 .CodeMirror {
@@ -43,6 +38,15 @@ canvas {
     padding: 20px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.vis-ul li {
+    list-style-type: none;
+    text-align: center;
+}
+
+.vis-ul {
+    padding: 0;
 }
 
 li {
@@ -70,7 +74,7 @@ a:hover {
 }
 
 .header {
-    margin-bottom: 100px;
+    margin-bottom: 90px;
 }
 
 .header-main {
@@ -81,6 +85,10 @@ a:hover {
 
 .header-right {
     float: right;
+}
+
+.body-main {
+    margin-bottom: 25px;
 }
 
 
@@ -145,13 +153,18 @@ a:hover {
 
 .error-loading {
     margin-top: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 100px;
 }
 
 .search-url {
-    max-width: 30vw;
+    width: 30vw;
     border-left: none;
     min-width: 150px;
+}
+
+.search-url-container {
+    background-color: white;
+    display: inline-block;
 }
 
 .search-btn {
@@ -191,6 +204,29 @@ a:hover {
     padding-top: 50px;
 }
 
+#url-visualization-header {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: xx-large;
+    font-weight: bold;
+    color: rgb(18, 116, 237);
+}
+
+#url-visualization-header:hover {
+    text-decoration: underline;
+    /* color: var(--dark-text-color); */
+    /* color: rgb(18, 116, 237); */
+}
+
+#pages-chart {
+    margin-top: 30px;
+}
+
+.page-chart-subtext {
+    font-style: italic; 
+    margin-top: 20px;
+}
+
 #loading {
     display: none;
 }
@@ -207,10 +243,11 @@ a:hover {
 .contact {
     font-size: small;
     position: fixed;
-    bottom: 12px;
-    right: 12px;
+    bottom: 8px;
+    right: 8px;
     padding: 5px;
-    background-color: #DDDDDD;
+    background-color: #fff;
+    box-shadow: 0 6px 24px rgba(32,43,54,0.25) !important;
     border-radius: 5px;
     z-index: 10;
 }
@@ -220,19 +257,30 @@ a:hover {
     top: 0;
     left: 0;
     right: 0;
-    height: 600px;
+    height: 100%;
     z-index: -1;
     background-image: url(blob-shape.svg);
     background-size: cover;
 }
 
-.background1 {
+.background-1 {
     position: absolute;
     left: 0;
     right: 0;
-    top: 900px;;
-    height: 900px;
+    top: 800px;;
+    height: 100%;
     z-index: -1;
-    background-image: url(blob-shape1.svg);
+    background-image: url(blob-shape-1.svg);
+    background-size: cover;
+}
+
+.background-2 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 1600px;;
+    height: 100%;
+    z-index: -1;
+    background-image: url(blob-shape-2.svg);
     background-size: cover;
 }

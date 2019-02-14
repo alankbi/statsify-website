@@ -17,18 +17,18 @@
     </head>
     <body>
         <div class="background"></div>
-        <div class="container">
+        <div class="container mb-3">
             <div class="header">
                 <div class="header-main">
                     <a href="/">Statsify</a>
                 </div>
                 <div class="header-main header-right">
-                    <a href="/api">API</a>
+                    <a href="/api">API Docs</a>
                 </div>
             </div>
 
             <div class="body text-center">
-                <h1 class="dark-font font-weight-bold">Visualize a page or website</h1><br>
+                <h1 class="dark-font font-weight-bold body-main">Visualize a page or website</h1>
                 <p>Show key stats such as word count, number of pages, and more</p>
             </div>
 
@@ -53,7 +53,9 @@
                         <option value="8">8</option>
                     </select>
                 </div>
-                <input type="text" class="search-url search-btn form-control text-center" id="search-url"  placeholder="http://www.example.com" onchange="onSearchUrlChange();">
+                <div class="search-url-container">
+                    <input type="text" class="search-url search-btn form-control text-center" id="search-url"  placeholder="http://www.example.com" onchange="onSearchUrlChange();">
+                </div>
                 <button class="btn btn-primary search-btn" id="search-btn" onclick="onSearch();">SEARCH</button>
             </div>
 
@@ -63,32 +65,35 @@
             </div>
 
             <div id="visualizations">
-                <div class="background1"></div>
-                <div class="row">
-                    <div class="col-lg-7">
+                <div class="background-1"></div>
+                <div class="text-center">
+                    <a class="text-center" id="url-visualization-header"></a><br><br>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-5">
                         <div class="visualizations">
                             <h5 class="text-center dark-font">Internal Links</h5>
-                            <ul id="internal-links"></ul>
-
+                            <ul class="vis-ul" id="internal-links"></ul>
+                            <br>
                             <h5 class="text-center dark-font">Outbound Links</h5>
-                            <ul id="outbound-links"></ul>
+                            <ul class="vis-ul" id="outbound-links"></ul>
                         </div>
                     </div>
-                    <div class="col-lg-5 justify-content-center">
+                    <div class="col-lg-7 justify-content-center">
                         <div class="visualizations">
-                            <canvas id="links-chart" width="380" height="380"></canvas>
+                            <canvas id="links-chart" width="410" height="410"></canvas>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-lg-5">
                         <div class="visualizations">
-                            <h5 class="text-center dark-font">Key Phrases: </h5>
-                            <ul id="key-phrases"></ul>
-                            <h5 id="word-count-header" class="text-center dark-font">Word Count: </h5>
-                            <p id="word-count"></p>
-                            <h5 class="website-item text-center dark-font">Average Word Count: </h5><br>
-                            <p class="website-item" id="average-word-count"></p>
+                            <br><h5 class="text-center dark-font">Key Phrases </h5>
+                            <ul class="vis-ul" id="key-phrases"></ul><br>
+                            <h5 id="word-count-header" class="text-center dark-font">Word Count </h5>
+                            <p class="text-center" id="word-count"></p><br>
+                            <h5 class="website-item text-center dark-font">Average Word Count </h5>
+                            <p class="website-item text-center" id="average-word-count"></p>
                         </div>
                     </div>
                     <div class="col-lg-7 justify-content-center">
@@ -99,11 +104,14 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="visualizations">
-                        <canvas class="website-item" id="pages-chart" width="800" height="500"></canvas>
+                        <div class="background-2 website-item"></div>
+                        <canvas class="website-item" id="pages-chart" width="850" height="500"></canvas>
+                        <p class="website-item page-chart-subtext text-center">Click a page to statsify. </p>
                     </div>
                 </div>
 
                 <div class="json-display">
+                    <h5 class="text-center dark-font">JSON Response </h5>
                     <textarea id="json-display"></textarea>
                 </div>
             </div>
