@@ -37,10 +37,10 @@ a {
 }
 
 code {
-    background: rgba(95, 105, 115, .1);
+    /* background: rgba(95, 105, 115, .1); */
     padding: 4px;
     border-radius: 3px;
-    color: #F9425F;
+    color: rgb(18, 116, 237);/*#F9425F;*/
 }
 
 .id-link:hover {
@@ -103,10 +103,17 @@ a:hover {
     margin-right: 20px;
 }
 
+.header-left {
+    float: left;
+}
+
 .header-right {
     float: right;
 }
 
+.header-logo {
+    margin-top: -10px;
+}
 
 .drop-btn {
     color: white;

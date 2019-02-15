@@ -20,11 +20,14 @@
             <div class="background-2"></div>
             <div class="background-3"></div>
             <div class="header">
-                <div class="header-main">
+                <div class="header-main header-left">
                     <a href="/">Statsify</a>
                 </div>
                 <div class="header-main header-right">
                     <a href="/api">API Docs</a>
+                </div>
+                <div class="text-center">
+                    <a href="/"><img class="header-logo" alt="Logo" width="40px" src="logo.png"></a>
                 </div>
             </div>
 
@@ -88,7 +91,7 @@
                 <ul class="dark-text-container">
                     <li>Currently, only HTML pages are included in the data returned by the API.</li>
                     <li>The API scrapes only up to 100 unique urls per call to prevent large websites from taking forever; 
-                        this includes non-HTML pagees, as each page takes time to request. </li>
+                        this includes non-HTML pages, as each page takes time to request. </li>
                     <li>After the 100 urls limit is reached, all other urls are grouped together under the url * with
                         the following JSON representation (does not affect a website's average word count): 
                     </li>
