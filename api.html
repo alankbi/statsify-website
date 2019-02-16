@@ -2,7 +2,16 @@
 <html>
     <head>
         <title>Statsify - API</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134650186-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
 
+            gtag('config', 'UA-134650186-1');
+        </script>
+        
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="index.css">
@@ -67,7 +76,7 @@
                 <textarea id="website-response"></textarea><br>
                 <p style="font-style: italic;">Note 1: The "page" key contains an object with the same structure 
                     as returned by the <code>page</code> endpoint.</p>
-                <p style="font-style: italic;">Note 2: "freq" refers how many times a page is linked to across the whole website.</p>
+                <p style="font-style: italic;">Note 2: "freq" refers to how many times a page is linked to across the whole website.</p>
             </div><br><br>
 
             <div class="error-documentation" id="errors">
@@ -92,7 +101,7 @@
                     <li>Currently, only HTML pages are included in the data returned by the API.</li>
                     <li>The API scrapes only up to 100 unique urls per call to prevent large websites from taking forever; 
                         this includes non-HTML pages, as each page takes time to request. </li>
-                    <li>After the 100 urls limit is reached, all other urls are grouped together under the url * with
+                    <li>After the 100 url limit is reached, all other urls are grouped together under the url * with
                         the following JSON representation (does not affect a website's average word count): 
                     </li>
                 </ul>
