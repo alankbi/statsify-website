@@ -1,5 +1,6 @@
 var searchOptions = ['PAGE', 'WEBSITE']
 var searchOptionIndex = 0;
+var extensionMode = false;
 
 onDropdownClicked = function () {
     document.getElementById('dropdown-content').classList.toggle('show');
@@ -102,7 +103,9 @@ onSearch = function () {
                 });
             }
             visualize(data, searchType)
-            renderJSON(data);
+            if (!extensionMode) {
+                renderJSON(data);
+            }
         }
       });
 
@@ -138,6 +141,44 @@ checkUrlParameters = function () {
         onSearch();
     }
 
+    extensionMode = (params.get('extensionMode') === 'true');
+
+    if (extensionMode) {
+        document.getElementById('body').style.display = 'none';
+        document.getElementById('search').style.display = 'none';
+        document.getElementById('json-container').style.display = 'none';
+        
+        var linksChart = document.getElementById('links-chart');
+        linksChart.width = 380;
+        linksChart.height = 380;
+
+        var linksChart = document.getElementById('links-chart');
+        linksChart.width = 360;
+        linksChart.height = 360;
+
+        var textChart = document.getElementById('text-chart');
+        textChart.style.padding = 5;
+        textChart.width = 360;
+        textChart.height = 240;
+
+        var baseUrl = [location.protocol, '//', location.host, location.pathname].join('');
+        
+        params.delete('extensionMode');
+        var statsifyLink = document.getElementById('statsify-text-link');
+        statsifyLink.setAttribute('href', baseUrl + '?' + params.toString());
+        statsifyLink.innerText = 'Statsify.us';
+
+        var a = document.createElement('a');
+        a.textContent = 'Statsify this website';
+        params.append('type', 'website');
+        a.setAttribute('href', baseUrl + '?' + params.toString());
+        document.getElementById('visualizations').append(a);
+
+        Array.prototype.forEach.call(document.body.getElementsByTagName('a'), function (link) {
+            link.setAttribute('target', '_blank');
+        });
+
+    }
 }
 
 window.onload = function () {
