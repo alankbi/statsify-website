@@ -73,12 +73,12 @@ onSearch = function () {
     Array.prototype.forEach.call(document.getElementsByClassName('website-item'), function (item) {
         item.style.display = 'none';
     });
-    document.getElementById('loading').style.display = 'initial';
+    document.getElementById('logo').setAttribute('src', 'loading_logo.gif');
 
     var xhr = new XMLHttpRequest();
     xhr.addEventListener('readystatechange', function () {
         if (this.readyState === this.DONE) {
-            document.getElementById('loading').style.display = 'none';
+            document.getElementById('logo').setAttribute('src', 'logo.png');
             data = JSON.parse(this.responseText);
             if (data.hasOwnProperty('error')) {
                 displayError(data['error']);
@@ -86,18 +86,14 @@ onSearch = function () {
             }
 
             var urlHeader = document.getElementById('url-visualization-header');
-            urlHeader.innerText = searchUrlField.value;// + ' \u2192';
-            //urlHeader.onclick = function () {
-                if (searchUrlField.value.startsWith('http')) {
-                    //window.open(searchUrlField.value, '_blank');
-                    urlHeader.href = searchUrlField.value;
-                } else {
-                    //window.open('http://' + searchUrlField.value, '_blank');
-                    urlHeader.href = 'http://' + searchUrlField.value;
-                }
-                urlHeader.target = '_blank';
+            urlHeader.innerText = searchUrlField.value;
+            if (searchUrlField.value.startsWith('http')) {
+                urlHeader.href = searchUrlField.value;
+            } else {
+                urlHeader.href = 'http://' + searchUrlField.value;
+            }
+            urlHeader.target = '_blank';
                 
-            //};
             
             document.getElementById('visualizations').style.display = 'block';
             if (searchType === 'website') {
