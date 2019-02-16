@@ -234,6 +234,7 @@ a:hover {
     font-size: xx-large;
     font-weight: bold;
     color: rgb(18, 116, 237);
+    word-break: break-all;
 }
 
 #url-visualization-header:hover {
