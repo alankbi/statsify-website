@@ -95,11 +95,14 @@ visualizePages = function (data, ctx) {
                 xAxes: [{
                     ticks: {
                         callback: function(value) {
+                            if (value === '*') {
+                                return 'Other pages (not counted)'
+                            }
                             if (value.length > 35) {
                                 return value.substr(0, 35) + '...';
-                            } else {
-                                return value;
                             }
+                            return value;
+                            
                         },
                         autoSkip: false,
                         maxRotation: 60,

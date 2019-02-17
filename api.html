@@ -99,9 +99,10 @@
                 <a class="id-link" href="#other"><h2 class="dark-font">Other Details</h2></a><br>
                 <ul class="dark-text-container">
                     <li>Currently, only HTML pages are included in the data returned by the API.</li>
-                    <li>The API scrapes only up to 100 unique urls per call to prevent large websites from taking forever; 
-                        this includes non-HTML pages, as each page takes time to request. </li>
-                    <li>After the 100 url limit is reached, all other urls are grouped together under the url * with
+                    <li>The API stops scraping new sites after reaching 100 unique urls or after 25 seconds have passed in a 
+                        single call to prevent reaching Heroku's 30 second timeout limit; this includes non-HTML pages, 
+                        as each page takes time to request. </li>
+                    <li>After the 100-url or 25-second limit is reached, all other urls are grouped together under the url * with
                         the following JSON representation (does not affect a website's average word count): 
                     </li>
                 </ul>
@@ -109,7 +110,10 @@
             </div>
         </div>
         <div class="contact"> 
-            <a href="mailto:alan.bi326@gmail.com">Feedback & Questions</a>
+            <a href="/contact">Feedback & Questions</a>
         </div>
+        <!-- <div class="extension">
+            <a href="/">Chrome Extension</a>
+        </div> --> <!-- This blocks too much text on the API page -->
     </body>
 </html>

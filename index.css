@@ -263,16 +263,42 @@ a:hover {
     display: none;
 }
 
-.contact {
+.contact, .extension {
     font-size: small;
     position: fixed;
     bottom: 8px;
-    right: 8px;
     padding: 5px;
     background-color: #fff;
     box-shadow: 0 6px 24px rgba(32,43,54,0.25) !important;
     border-radius: 5px;
     z-index: 10;
+}
+
+.contact {
+    right: 8px;
+}
+
+.contact-container {
+    line-height: 30px;
+    margin: 0 80px;
+}
+
+#mc-embedded-subscribe {
+    height: var(--search-item-height);
+    border-radius: 1px;
+    font-size: smaller;
+    box-shadow: 0 8px 24px rgba(32,43,54,0.12) !important;
+    mix-blend-mode: multiply;
+    color: white;
+
+    border: none;
+    width: 100px;
+    margin-left: 10px;
+    background: linear-gradient(65deg, rgb(76, 175, 80) 0%,rgb(120, 190, 115) 100%);
+}
+
+.extension {
+    left: 8px;
 }
 
 .background, .background-1, .background-2, .background-3 {
