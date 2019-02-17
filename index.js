@@ -74,12 +74,16 @@ onSearch = function () {
     Array.prototype.forEach.call(document.getElementsByClassName('website-item'), function (item) {
         item.style.display = 'none';
     });
-    document.getElementById('logo').setAttribute('src', 'loading_logo.gif');
+    document.getElementById('logo').setAttribute('src', 'assets/loading_logo.gif');
 
     var xhr = new XMLHttpRequest();
     xhr.addEventListener('readystatechange', function () {
         if (this.readyState === this.DONE) {
-            document.getElementById('logo').setAttribute('src', 'logo.png');
+            document.getElementById('logo').setAttribute('src', 'assets/logo.png');
+            if (this.status === 0) {
+                displayError('An internal error occurred. Please enter a different url or try again later.')
+            }
+
             data = JSON.parse(this.responseText);
             if (data.hasOwnProperty('error')) {
                 displayError(data['error']);

@@ -286,20 +286,20 @@ a:hover {
 
 .background {
     top: 0;
-    background-image: url(blob-shape.svg);
+    background-image: url(assets/blob-shape.svg);
 }
 
 .background-1 {
     top: 800px;;
-    background-image: url(blob-shape-1.svg);
+    background-image: url(assets/blob-shape-1.svg);
 }
 
 .background-2 {
     top: 1600px;;
-    background-image: url(blob-shape-2.svg);
+    background-image: url(assets/blob-shape-2.svg);
 }
 
 .background-3 {
     top: 2400px;;
-    background-image: url(blob-shape-1.svg);
+    background-image: url(assets/blob-shape-1.svg);
 }
