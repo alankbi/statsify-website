@@ -280,21 +280,28 @@ a:hover {
 
 .contact-container {
     line-height: 30px;
-    margin: 0 80px;
+    margin: 0 35px;
 }
 
 #mc-embedded-subscribe {
-    height: var(--search-item-height);
-    border-radius: 1px;
-    font-size: smaller;
+    height: var(--search-item-height) !important;
+    border-radius: 1px !important;
     box-shadow: 0 8px 24px rgba(32,43,54,0.12) !important;
     mix-blend-mode: multiply;
-    color: white;
-
-    border: none;
-    width: 100px;
-    margin-left: 10px;
+    width: 150px !important;
+    color: white !important;
     background: linear-gradient(65deg, rgb(76, 175, 80) 0%,rgb(120, 190, 115) 100%);
+}
+
+#mc-embedded-subscribe:hover {
+    background: linear-gradient(65deg, rgb(80, 175, 85) 0%,rgb(122, 190, 120) 100%);
+    box-shadow: 0 8px 24px rgba(32,43,54,0.25) !important;
+}
+
+#mce-EMAIL {
+    width: 300px !important;
+    margin: 0 auto !important;
+    display: inline-block !important;
 }
 
 .extension {

@@ -151,6 +151,7 @@ checkUrlParameters = function () {
         document.getElementById('body').style.display = 'none';
         document.getElementById('search').style.display = 'none';
         document.getElementById('json-container').style.display = 'none';
+        document.getElementById('extension').style.display = 'none';
         
         var linksChart = document.getElementById('links-chart');
         linksChart.width = 380;
