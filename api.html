@@ -82,7 +82,7 @@
             <div class="error-documentation" id="errors">
                 <a class="id-link" href="#errors"><h2 class="dark-font">Errors</h2></a><br>
 
-                <h5 class="dark-font">Response:</h5>
+                <h5 class="dark-font">Example Response:</h5>
                 <textarea id="error-response"></textarea><br>
 
                 <h5 class="dark-font">Common Errors:</h5>
@@ -100,7 +100,7 @@
                 <ul class="dark-text-container">
                     <li>Currently, only HTML pages are included in the data returned by the API.</li>
                     <li>The API stops scraping new sites after reaching 100 unique urls or after 25 seconds have passed in a 
-                        single call to prevent reaching Heroku's 30 second timeout limit; this includes non-HTML pages, 
+                        single call to prevent reaching Heroku's 30 second timeout limit. The 100-url limit includes non-HTML pages, 
                         as each page takes time to request. </li>
                     <li>After the 100-url or 25-second limit is reached, all other urls are grouped together under the url * with
                         the following JSON representation (does not affect a website's average word count): 
