@@ -68,6 +68,12 @@ onSearch = function () {
         var depth = selectDepth.options[selectDepth.selectedIndex].value;
         requestUrl += '&depth=' + depth;
     }
+    if (extensionMode) {
+        requestUrl += '&source=extension';
+    } else {
+        requestUrl += '&source=website';
+    }
+
     console.log(requestUrl);
 
     document.getElementById('visualizations').style.display = 'none';
@@ -140,12 +146,11 @@ checkUrlParameters = function () {
     if (depth !== null && !isNaN(depth) && (function (x) { return (x | 0) === x; })(parseFloat(depth))) {
         document.getElementById('select-depth').value = Math.max(0, Math.min(8, depth));
     }
+    extensionMode = (params.get('extensionMode') === 'true');
     if (url !== null) {
         document.getElementById('search-url').value = url;
         onSearch();
     }
-
-    extensionMode = (params.get('extensionMode') === 'true');
 
     if (extensionMode) {
         document.getElementById('body').style.display = 'none';
