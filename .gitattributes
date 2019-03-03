@@ -1,2 +1,1 @@
-cat .gitattributes
-lib linguist-vendored=true
+lib/* linguist-vendored=true
